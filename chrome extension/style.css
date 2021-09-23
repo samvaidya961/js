@@ -1,0 +1,39 @@
+body {
+    box-sizing: border-box;
+    min-width: 350px;
+}
+
+a,
+a:hover {
+    color: grey;
+    text-decoration: underline grey;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+.mb-2 {
+    margin-bottom: 0.7rem;
+}
+
+.extension-cont {
+    padding: 0.5rem;
+    margin: auto;
+}
+
+input,
+input:hover {
+    border: 1px solid rgb(189, 189, 189);
+    padding: 7px;
+    width: 340px;
+    border-radius: 3px;
+}
+
+.btn {
+    background-color: teal;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 3px;
+    color: white;
+}
