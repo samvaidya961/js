@@ -8,7 +8,7 @@ const startbtn = document.getElementById('start');
 const stopbtn = document.getElementById('stop');
 const resetbtn = document.getElementById('reset');
 
-var Interval;
+let Interval;
 
 startbtn.addEventListener("click", function () {
     clearInterval(Interval);
