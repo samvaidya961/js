@@ -11,7 +11,6 @@ const resetbtn = document.getElementById('reset');
 let Interval;
 
 startbtn.addEventListener("click", function () {
-    clearInterval(Interval);
     Interval = setInterval(start, 1000);
 })
 
@@ -20,7 +19,6 @@ stopbtn.addEventListener("click", function () {
 })
 
 resetbtn.addEventListener("click", function () {
-    clearInterval(Interval);
     min = "00";
     sec = "00";
     minstext.textContent = min;
