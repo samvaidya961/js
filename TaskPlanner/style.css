@@ -85,9 +85,7 @@ section {
   width: 20%;
   text-align: right;
 }
-.dot1,
-.dot2,
-.dot3 {
+.dot {
   border-radius: 50%;
   font-size: 7px;
   height: 12px;
@@ -95,16 +93,9 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #0091d54d;
 }
-.dot1 {
-  background-color: rgb(177, 248, 248);
-}
-.dot2 {
-  background-color: rgb(196, 255, 147);
-}
-.dot3 {
-  background-color: rgba(255, 146, 146, 0.685);
-}
+
 
 .taskitem-part2 p {
   overflow: hidden;
@@ -136,5 +127,5 @@ section {
     border-top-right-radius: 20px;
     background-color: var(--pink);
     color: white;
-    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0);
 }
