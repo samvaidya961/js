@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+body{
+    padding-bottom: 3rem;
+}
+:root {
+  --blue: #0093d5;
+  --pink: #c28f9e;
+}
+p {
+  font-size: 13px;
+}
+section {
+  padding: 0.3rem;
+}
+.appheadpart {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+.appsearchcont input {
+  border-radius: 20px;
+  background-color: var(--pink);
+  border: none;
+  padding: 0.3rem;
+}
+.appsearchcont input::placeholder {
+  color: white;
+  text-align: center;
+}
+.modal-sidebar{
+    width: 70vw;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+/* categories scrolling */
+.categorycont {
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+}
+.category-item {
+  display: inline-block;
+  margin: 0.2rem 0.3rem;
+}
+.category-item button {
+  border: 1px solid var(--pink);
+  border-radius: 20px;
+}
+.category-item button:hover {
+  background-color: #c28f9e5d;
+}
+.category-item .badge {
+  background-color: var(--pink);
+}
+
+/* tasks */
+.taskscont {
+  padding: 0.4rem;
+}
+.task-item {
+  display: flex;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgb(235, 235, 235);
+  box-shadow: 2px 2px 6px rgb(209, 209, 209);
+  border-radius: 9px;
+}
+.taskitem-part1 {
+  width: 10%;
+  padding-top: 0.3rem;
+}
+.taskitem-part2 {
+  width: 70%;
+}
+.taskitem-part3 {
+  width: 20%;
+  text-align: right;
+}
+.dot1,
+.dot2,
+.dot3 {
+  border-radius: 50%;
+  font-size: 7px;
+  height: 12px;
+  width: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dot1 {
+  background-color: rgb(50, 214, 214);
+}
+.dot2 {
+  background-color: rgb(148, 236, 16);
+}
+.dot3 {
+  background-color: rgb(186, 136, 252);
+}
+
+.taskitem-part2 p {
+  overflow: hidden;
+}
+.taskitem-part3 p {
+  font-size: 10px;
+}
+.taskitem-part2 h6 {
+  font-weight: 550;
+}
+
+/* addtask */
+.addtaskcont{
+    padding: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+}
+.addtaskcont button{
+    width: 100%;
+    background-color: var(--pink);
+    color: white;
+    border-radius: 20px;
+}
+.modal-addtask{
+    height: 80vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--pink);
+    color: white;
+}
