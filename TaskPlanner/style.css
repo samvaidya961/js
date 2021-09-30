@@ -41,7 +41,7 @@ p {
   background-color: var(--teal);
   border-left: 2px solid rgba(255, 255, 255, 0);
 }
-.modal-sidebar p{
+.modal-sidebar p {
   font-size: 14px;
 }
 
@@ -97,12 +97,12 @@ p {
   width: 25%;
   text-align: right;
 }
-.taskitem-part4{
+.taskitem-part4 {
   width: 100%;
   display: flex;
   justify-content: end;
 }
-.taskitem-part4 span{
+.taskitem-part4 span {
   font-size: 18px;
   margin-left: 0.7rem;
 }
@@ -128,10 +128,10 @@ p {
   background-color: var(--yellow);
   color: black;
 }
-#dot4{
+#dot4 {
   background-color: rgb(180, 180, 180);
 }
-#dot5{
+#dot5 {
   background-color: var(--teal);
   color: white;
 }
@@ -212,10 +212,10 @@ p {
   margin-top: 0.9rem;
   margin-right: 0.9rem;
 }
-.addtaskbutton{
+.addtaskbutton {
   text-align: right;
 }
-.addtaskbutton button{
+.addtaskbutton button {
   background-color: var(--red);
   color: white;
   padding-left: 1rem;
