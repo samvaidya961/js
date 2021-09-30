@@ -200,3 +200,22 @@ p {
   padding-right: 1rem;
 }
 
+@media only screen and (min-device-width: 800px) and (max-device-width: 1500px) {
+  section {
+    padding-left: 260px;
+    padding-right: 260px;
+  }
+  .addtaskcont {
+    position: relative;
+  }
+  .appheadcont {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+  span:hover {
+    cursor: pointer;
+  }
+  .modal-sidebar {
+    width: 20vw;
+  }
+}
