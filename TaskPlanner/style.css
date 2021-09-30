@@ -91,7 +91,7 @@ section {
 }
 .dot {
   border-radius: 50%;
-  font-size: 7px;
+  font-size: 9px;
   height: 14px;
   width: 14px;
   display: flex;
