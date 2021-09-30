@@ -28,7 +28,7 @@ p {
   border-radius: 20px;
   background-color: var(--teal);
   border: none;
-  padding: 0.3rem;
+  padding: 0.4rem;
 }
 .appsearchcont input::placeholder {
   color: white;
@@ -117,6 +117,13 @@ p {
 #dot3 {
   background-color: var(--yellow);
   color: black;
+}
+#dot4{
+  background-color: rgb(180, 180, 180);
+}
+#dot5{
+  background-color: var(--teal);
+  color: white;
 }
 .taskitem-part2 h6 {
   font-size: 14px;
