@@ -49,7 +49,8 @@ section {
 }
 .category-item {
   display: inline-block;
-  margin: 0.2rem 0.3rem;
+  margin-right: 0.3rem;
+  margin-top: 0.2rem;
 }
 .category-item button {
   border: 1px solid var(--red);
@@ -72,8 +73,8 @@ section {
   display: flex;
   width: 100%;
   padding: 0.8rem;
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
   border: 1px solid rgb(235, 235, 235);
   box-shadow: 2px 2px 6px rgb(209, 209, 209);
   border-radius: 9px;
