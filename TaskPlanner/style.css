@@ -178,29 +178,7 @@ p {
 .addtask-form {
   margin-bottom: 1rem;
 }
-.addtask-form input {
-  background-color: var(--teal);
-  border: none;
-}
-.addtask-form input:focus {
-  background-color: var(--teal);
-  border: none;
-}
-.addtask-form input::placeholder {
-  color: white;
-}
 
-.addtask-form textarea {
-  background-color: var(--teal);
-  border: none;
-}
-.addtask-form textarea:focus {
-  background-color: var(--teal);
-  border: none;
-}
-.addtask-form textarea::placeholder {
-  color: white;
-}
 .addtask-priority {
   margin-top: 1rem;
 }
