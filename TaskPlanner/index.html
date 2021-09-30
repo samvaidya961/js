@@ -172,7 +172,8 @@
                     <button type="button" class="btn btn-light btn-sm">Tution</button>
                     <button type="button" class="btn btn-light btn-sm">College</button>
                     <button type="button" class="btn btn-light btn-sm">Meeting</button>
-                    <button type="button" class="btn btn-sm text-light p-0">
+                    <button type="button" class="btn btn-sm text-light p-0" data-bs-toggle="modal"
+                        data-bs-target="#addcategoryModal">
                         <span class="material-icons">
                             add_box
                         </span>
@@ -240,6 +241,25 @@
     </div>
     <!-- modal for adding task ends-->
 
+
+    <!-- Modal for add category-->
+    <div class="modal fade" id="addcategoryModal" tabindex="-1" aria-labelledby="addcategoryModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content small">
+                <form action="">
+                    <div class="modal-body pt-4 pb-4">
+                        <input type="text" class="form-control form-control-sm" placeholder="Type to add new Category">
+                    </div>
+                    <div class="modal-footer">
+                        <div class="addtaskbutton">
+                            <button type="button" class="btn btn-sm">Add Category</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
