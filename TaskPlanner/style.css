@@ -80,10 +80,11 @@ p {
   width: 100%;
   padding: 0.8rem;
   padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border: 1px solid rgb(235, 235, 235);
   box-shadow: 2px 2px 6px rgb(209, 209, 209);
   border-radius: 9px;
+  flex-wrap: wrap;
 }
 .taskitem-part1 {
   width: 10%;
@@ -95,6 +96,15 @@ p {
 .taskitem-part3 {
   width: 25%;
   text-align: right;
+}
+.taskitem-part4{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.taskitem-part4 span{
+  font-size: 18px;
+  margin-left: 0.7rem;
 }
 .dot {
   border-radius: 50%;
@@ -178,7 +188,18 @@ p {
 }
 .addtask-form input::placeholder {
   color: white;
-  text-align: center;
+}
+
+.addtask-form textarea {
+  background-color: var(--teal);
+  border: none;
+}
+.addtask-form textarea:focus {
+  background-color: var(--teal);
+  border: none;
+}
+.addtask-form textarea::placeholder {
+  color: white;
 }
 .addtask-priority {
   margin-top: 1rem;
@@ -200,3 +221,4 @@ p {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
