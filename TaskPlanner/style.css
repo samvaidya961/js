@@ -38,7 +38,13 @@ p {
   width: 70vw;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
+  background-color: var(--teal);
+  border-left: 2px solid rgba(255, 255, 255, 0);
 }
+.modal-sidebar p{
+  font-size: 14px;
+}
+
 /* categories scrolling */
 .categorycont {
   width: 100%;
