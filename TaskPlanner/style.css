@@ -144,3 +144,29 @@ p {
     color: white;
     border-top: 2px solid rgba(255, 255, 255, 0);
 }
+.line{
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 20px;
+  margin: auto;
+  margin-top: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+.addtask-form{
+  margin-bottom: 1rem;
+}
+.addtask-form input{
+  background-color: var(--dblue);
+  border: none;
+}
+.addtask-form input:focus{
+  background-color: var(--dblue);
+  border: none;
+}
+.addtask-form input::placeholder{
+  color: white;
+  text-align: center;
+}
+.addtask-priority{
+  margin-top: 1rem;
+}
