@@ -10,11 +10,13 @@ body{
     padding-bottom: 3rem;
 }
 :root {
-  --blue: #0093d5;
-  --pink: #c28f9e;
+  --red: #C70039;
+  --yellow:#FFC300;
+  --orange:#FF5733;
+  --dblue:#0F52BA;
 }
 p {
-  font-size: 13px;
+  font-size: 12px;
 }
 section {
   padding: 0.3rem;
@@ -26,7 +28,7 @@ section {
 }
 .appsearchcont input {
   border-radius: 20px;
-  background-color: var(--pink);
+  background-color: var(--dblue);
   border: none;
   padding: 0.3rem;
 }
@@ -50,14 +52,16 @@ section {
   margin: 0.2rem 0.3rem;
 }
 .category-item button {
-  border: 1px solid var(--pink);
+  border: 1px solid var(--red);
   border-radius: 20px;
 }
 .category-item button:hover {
   background-color: #c28f9e5d;
 }
 .category-item .badge {
-  background-color: var(--pink);
+  background-color: lightgrey;
+  color: rgb(49, 49, 49);
+  font-size: 8px;
 }
 
 /* tasks */
@@ -88,17 +92,27 @@ section {
 .dot {
   border-radius: 50%;
   font-size: 7px;
-  height: 12px;
-  width: 12px;
+  height: 14px;
+  width: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0091d54d;
 }
 
-
-.taskitem-part2 p {
-  overflow: hidden;
+#dot1{
+  background-color: var(--red);
+  color: white;
+}
+#dot2{
+  background-color: var(--orange);
+  color: white;
+}
+#dot3{
+  background-color: var(--yellow);
+  color: black;
+}
+.taskitem-part2 h6{
+ font-size: 14px;
 }
 .taskitem-part3 p {
   font-size: 10px;
@@ -117,7 +131,7 @@ section {
 }
 .addtaskcont button{
     width: 100%;
-    background-color: var(--pink);
+    background-color: var(--dblue);
     color: white;
     border-radius: 20px;
 }
@@ -125,7 +139,7 @@ section {
     height: 80vh;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: var(--pink);
+    background-color: var(--dblue);
     color: white;
     border-top: 2px solid rgba(255, 255, 255, 0);
 }
