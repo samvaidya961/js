@@ -121,6 +121,15 @@ btnEl.addEventListener("click", function () {
 })
 
 delallbtn.addEventListener("click", function () {
-    localStorage.clear()
+
+    let msg = confirm("Are you sure to delete all tasks ?")
+
+    if (msg === true) {
+        localStorage.clear()
+    }
+    else {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        alltasks(tasks)
+    }
 })
 
