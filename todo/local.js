@@ -31,9 +31,18 @@ function alltasks(tasks) {
     for (let i = 0; i < tasks.length; i++) {
         taskitems += `
                 <div class="d-flex mt-3">
-                <p class="mb-0 small me-3">${tasks[i]}</p>
-                <button id="deltaskbtn" class="btn btn-sm btn-danger me-3" onclick="deletetask(${i})";>Delete</button>
-                <button id="edittaskbtn" class="btn btn-sm btn-info me-3" onclick="edittask(${i})";>Edit</button>
+                <div class="col-9">
+                  <p class="mb-0 small me-1">${tasks[i]}</p>
+                </div>
+                <div class="col-3 d-flex editdelbtns">
+                    <button id="edittaskbtn" class="btn btn-sm me-1 text-success" onclick="edittask(${i})";>
+                    <span class="material-icons">edit</span>
+                    </button>
+                    <button id="deltaskbtn" class="btn btn-sm text-danger" onclick="deletetask(${i})";>
+                    <span class="material-icons">delete</span>
+                    </button>
+                  
+                </div>
                 </div>
                 <hr>
         `
