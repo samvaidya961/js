@@ -6,6 +6,7 @@ const editEl = document.getElementById('editEl')
 
 const delallbtn = document.getElementById('delallbtn')
 
+const tasttext = document.getElementById('tasttext')
 const deltaskbtn = document.getElementById('deltaskbtn')
 const edittaskbtn = document.getElementById('edittaskbtn')
 
@@ -32,17 +33,22 @@ function alltasks(tasks) {
         taskitems += `
                 <div class="d-flex mt-3">
                 <div class="col-9">
-                  <p class="mb-0 small me-1">${tasks[i]}</p>
+                  <p id="tasttext" class="mb-0 small me-1">${tasks[i]}</p>
                 </div>
                 <div class="col-3 d-flex editdelbtns">
+
+                   
+
                     <button id="edittaskbtn" class="btn btn-sm me-1 text-success" onclick="edittask(${i})";>
                     <span class="material-icons">edit</span>
                     </button>
+
                     <button id="deltaskbtn" class="btn btn-sm text-danger" onclick="deletetask(${i})";>
                     <span class="material-icons">delete</span>
                     </button>
-                  
+                   
                 </div>
+
                 </div>
                 <hr>
         `
@@ -53,11 +59,20 @@ function alltasks(tasks) {
 
 function deletetask(i) {
 
-    tasksFromLocalStorage.splice(i, 1)
+    let msg = confirm("Are you sure to delete this task ?")
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    if (msg === true) {
+        tasksFromLocalStorage.splice(i, 1)
 
-    alltasks(tasks)
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+
+        alltasks(tasks)
+    }
+    else {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+
+        alltasks(tasks)
+    }
 
 }
 
@@ -70,6 +85,9 @@ function edittask(i) {
     document.getElementById('btnEl').style.display = "none"
 
 }
+
+
+
 
 editEl.addEventListener("click", function () {
 
