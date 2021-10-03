@@ -32,15 +32,16 @@ function alltasks(tasks) {
         taskitems += `
                 <div class="d-flex mt-3">
                 <div class="col-9">
-                  <p class="mb-0 small me-3">${tasks[i]}</p>
+                  <p class="mb-0 small me-1">${tasks[i]}</p>
                 </div>
                 <div class="col-3 d-flex editdelbtns">
-                   <button id="deltaskbtn" class="btn btn-sm me-3 text-danger" onclick="deletetask(${i})";>
-                   <span class="material-icons">delete</span>
-                   </button>
-                   <button id="edittaskbtn" class="btn btn-sm me-3 text-success" onclick="edittask(${i})";>
-                   <span class="material-icons">edit</span>
-                   </button>
+                    <button id="edittaskbtn" class="btn btn-sm me-1 text-success" onclick="edittask(${i})";>
+                    <span class="material-icons">edit</span>
+                    </button>
+                    <button id="deltaskbtn" class="btn btn-sm text-danger" onclick="deletetask(${i})";>
+                    <span class="material-icons">delete</span>
+                    </button>
+                  
                 </div>
                 </div>
                 <hr>
