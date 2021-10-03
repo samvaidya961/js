@@ -12,7 +12,11 @@
 
     <title>Hello, world!</title>
 </head>
-
+<style>
+    #editEl{
+        display: none;
+    }
+</style>
 <body>
 
     <div class="container mt-3">
@@ -21,8 +25,8 @@
                 <input id="taskEl" class="form-control form-control-sm" type="text" placeholder="Type your task">
             </div>
             <div class="col">
-                <button id="btnEl" class="btn btn-dark btn-sm">Add</button>
-                <button id="editEl" class="btn btn-dark btn-sm">Edit</button>
+                <button id="btnEl" class="btn btn-dark btn-sm">Add New Element</button>
+                <button id="editEl" class="btn btn-dark btn-sm">Edit Selected Element</button>
             </div>
         </div>
         <div id="taskP" class="mt-3">

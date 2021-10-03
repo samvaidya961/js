@@ -57,6 +57,9 @@ function edittask(i) {
     indexvalue = i
     taskEl.value = tasks[i]
 
+    document.getElementById('editEl').style.display = "inline-block"
+    document.getElementById('btnEl').style.display = "none"
+
 }
 
 editEl.addEventListener("click", function () {
@@ -70,6 +73,9 @@ editEl.addEventListener("click", function () {
         localStorage.setItem("tasks", JSON.stringify(tasks));
         alltasks(tasks)
     }
+
+    document.getElementById('editEl').style.display = "none"
+    document.getElementById('btnEl').style.display = "inline-block"
 
 })
 
