@@ -55,6 +55,13 @@ function alltasks(tasks) {
     }
 
     taskP.innerHTML = taskitems
+
+    if (tasks.length < 2) {
+        delallbtn.textContent = ""
+    }
+    else{
+        delallbtn.textContent = "Delete All tasks"
+    }
 }
 
 function deletetask(i) {
@@ -85,7 +92,6 @@ function edittask(i) {
     document.getElementById('btnEl').style.display = "none"
 
 }
-
 
 
 
