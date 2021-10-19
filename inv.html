@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="{{ url('/') }}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+    <title>Invoice</title>
+</head>
+
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: DejaVu Sans, sans-serif;
+            /* font-family: "Open Sans", sans-serif; */
+        }
+
+        .invoicecontainer {
+            width: 94%;
+            margin: 1.5% 3%;
+            font-size: 15px;
+        }
+
+        .invheadpart1 img {
+            height: 3rem;
+            font-size: 13px
+        }
+
+
+        .invheadpart {
+            text-align: right;
+        }
+
+        .invheadpart strong {
+            font-size: 16px
+        }
+
+        .invoicecontentpart {
+            width: 48%;
+            float: left;
+            padding-bottom: 2rem;
+        }
+
+        .invoicecontentpart1 {
+            text-align: right;
+            float: right;
+            padding-bottom: 3rem;
+        }
+
+        .invoicetable table {
+            border: 1px solid rgb(88, 88, 88);
+            width: 100%;
+        }
+
+        .invoicesignaturediv {
+
+            text-align: right;
+        }
+
+        .signaturediv {
+            height: 3rem;
+            width: 170px;
+            margin-top: 0.7rem;
+            margin-bottom: 0.7rem;
+            margin-left: auto;
+            background-color: lightgrey;
+            text-align: center;
+        }
+
+        .signaturediv img {
+            margin-top: 0.1rem;
+            height: 2.8rem;
+        }
+
+        .invoiceverysmalltext {
+            font-size: 9px;
+            text-align: center;
+        }
+
+        .mb0 {
+            margin-bottom: 0px;
+        }
+
+        .mt5 {
+            margin-top: 2rem;
+        }
+
+        .invoicetable table {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            text-align: left;
+            width: 100%;
+        }
+
+        .invoicetable td,
+        .invoicetable th {
+            border: 1px solid grey;
+            padding: 5px;
+
+        }
+
+        .smalltxttableinvoice {
+            font-size: 11px;
+
+        }
+
+
+        .morefieldsoninvtable {
+            text-align: left;
+        }
+
+        .printinvbtn {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+
+        .printinvbtn input {
+            border: none;
+            background-color: lightgrey;
+            padding: 5px 14px;
+            border-radius: 3px;
+        }
+
+        /* Smartphones ----------- */
+
+        @media only screen and (min-device-width: 200px) and (max-device-width: 500px) {
+            .smalltxttableinvoice {
+                font-size: 8px;
+
+            }
+
+            .invoicetable td,
+            .invoicetable th {
+                padding: 2px;
+
+            }
+
+            .invoicecontainer {
+                font-size: 11px;
+            }
+
+            .invheadpart1 img {
+                height: 1.7rem;
+                font-size: 13px
+            }
+            .invheadpart strong{
+                font-size: 12px;
+            }
+        }
+    </style>
+    <section>
+        <div class="invoicecontainer">
+            <div class="invoicehead">
+                <div class="invheadpart1">
+                    <img src="data:image/jpeg;base64,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"
+                        alt="">
+                </div>
+                <div class="invheadpart">
+                    <strong>
+                        <p class="mb0">Tax Invoice/Bill of Supply/Cash Memo</p>
+                    </strong>
+                    <p>(Original for Recipient)</p>
+                </div>
+            </div>
+
+            <div class="invoicecontent mt5">
+                <div class="invoicecontentpart">
+                    <strong>
+                        <small>
+                            <p class="mb0">Sold By :</p>
+                        </small>
+                    </strong>
+                    <small>
+                        <p class="mb0">Skyline Distributors</p>
+                    </small>
+                    <small>
+                        {{ $sellerDetails->OfficeAddress }}
+                    </small>
+                    <div class="mt5">
+                        <p><small><strong>PAN No :</strong> AAQCS4259Q</small></p>
+                        <p><small><strong>GST Registration No :</strong> 27AAQCS4259Q1ZA</small></p>
+                    </div>
+
+                    <div class="mt5">
+
+                        <p class="mb0"><small><strong>Order Number :</strong> {{ $order->id }}</small></p>
+                        <p class="mb0"><small><strong>Order Date :</strong>
+                                {{ date('d M, Y', strtotime($order->created_at)) }}</small></p>
+                    </div>
+
+                </div>
+
+                <div class="invoicecontentpart invoicecontentpart1">
+                    <strong>
+                        <small>
+                            <p>Billing Address :</p>
+                        </small>
+                    </strong>
+                    <small>
+                        <p>{{ $details->customerName }}</p>
+                    </small>
+                    <small>
+                        <p>
+                            {{ $details->houseNumber }}, {{ $details->landmark }}, {{ $details->area }}
+                        </p>
+                    </small>
+                    <small>
+                        <p>{{ $details->town }}, {{ $details->landmark }}, {{ $details->pincode }}</p>
+                    </small>
+                    <small>
+                        <p>INDIA</p>
+                    </small>
+
+
+                    <div class="mt5">
+                        <strong>
+                            <small>
+                                <p class="mb0">Shipping Address :</p>
+                            </small>
+                        </strong>
+                        <small>
+                            <p class="mb0">{{ $details->customerName }}</p>
+                        </small>
+                        <small>
+                            <p class="mb0">
+                                {{ $details->houseNumber }}, {{ $details->landmark }}, {{ $details->area }}
+                            </p>
+                        </small>
+                        <small>
+                            <p class="mb0">{{ $details->town }}, {{ $details->landmark }},
+                                {{ $details->pincode }}</p>
+                        </small>
+                        <small>
+                            <p class="mb0">INDIA</p>
+                        </small>
+                        <p class="mb0"><small><strong>Place of delivery :</strong>
+                                {{ $details->landmark }}</small></p>
+                    </div>
+
+                    <div class="mt5">
+                        <p class="mb0"><small><strong>Invoice Number :</strong> {{ $order->id }} </small>
+                        </p>
+                        <p class="mb0"><small><strong>Invoice Details :</strong> {{ $order->id }}</small>
+                        </p>
+                        <p class="mb0"><small><strong>Invoice Date :</strong>
+                                {{ date('d M, Y', strtotime($order->created_at)) }}</small></p>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- {{-- <p style="page-break-after: always;">&nbsp;</p> --}} -->
+
+
+            <div class="invoicetable mt5">
+                <table class="smalltxttableinvoice mtable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">HSN</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Net Amount</th>
+                            <th scope="col">Tax Rate</th>
+                            <th scope="col">Tax Type</th>
+                            <th scope="col">Tax Amount</th>
+                            <th scope="col">Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr>
+                            <th scope="row">1</th>
+                            <th scope="row">85371090</th>
+                            <td>
+                                Selec Make 10" HMI with Ethernet [SP112-GT100-ET-CE]<br>
+                                Varient: SP112-GT100-ET-CE
+                            </td>
+                            <td>₹35114</td>
+                            <td>1</td>
+                            <td>₹35114</td>
+                            <td>18%</td>
+                            <td>GST</td>
+                            <td>₹4102</td>
+                            <td>₹22789</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <th scope="row">85371090</th>
+                            <td>
+                                Selec Make 10" HMI with Ethernet [SP112-GT100-ET-CE]<br>
+                                Varient: SP112-GT100-ET-CE
+                            </td>
+                            <td>₹35114</td>
+                            <td>1</td>
+                            <td>₹35114</td>
+                            <td>18%</td>
+                            <td>GST</td>
+                            <td>₹4102</td>
+                            <td>₹22789</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <th scope="row">85371090</th>
+                            <td>
+                                Selec Make 10" HMI with Ethernet [SP112-GT100-ET-CE]<br>
+                                Varient: SP112-GT100-ET-CE
+                            </td>
+                            <td>₹35114</td>
+                            <td>1</td>
+                            <td>₹35114</td>
+                            <td>18%</td>
+                            <td>GST</td>
+                            <td>₹4102</td>
+                            <td>₹22789</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">1</th>
+                            <th scope="row">85371090</th>
+                            <td>
+                                Selec Make 10" HMI with Ethernet [SP112-GT100-ET-CE]<br>
+                                Varient: SP112-GT100-ET-CE
+                            </td>
+                            <td>₹35114</td>
+                            <td>1</td>
+                            <td>₹35114</td>
+                            <td>18%</td>
+                            <td>GST</td>
+                            <td>₹4102</td>
+                            <td>₹22789</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="8" class="morefieldsoninvtable">Total :</th>
+                            <td>₹22000</td>
+                            <td>₹500
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="9" class="morefieldsoninvtable">Total Discount :</th>
+                            <td>₹2000</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="9" class="morefieldsoninvtable">Delivery Charge :</th>
+                            <td>₹50</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="9" class="morefieldsoninvtable">Total Payable Amount :</th>
+                            <td>₹24000</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="10" class="morefieldsoninvtable">
+                                <p class="mb0">Amount in Words:
+                                </p>
+                                <p class="mb0"> twenty four thousand</p>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" colspan="10">
+                                <div class="invoicesignaturediv">
+                                    <p class="mb0">For Skyline Distributors :
+                                    </p>
+                                    <div class="signaturediv">
+                                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYSEhgVFRcWGBgZHBgeHBkZGRwcGRkaGBoaHBgaHBocIS4lHB4rHxgZJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QHhISHzQrJCsxMTQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQxNDQ0NP/AABEIAHUBrQMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABwECBAUGAwj/xAA/EAABAgMFBAUKBgEFAQEAAAABAAIDBBEFBhIhMUFRYZEHEyIycRQWNFNygaGxwdEVIzNCUvDhJENigvGyF//EABgBAQADAQAAAAAAAAAAAAAAAAABAgME/8QAKBEAAwACAgEDAwQDAAAAAAAAAAECAxESMSEEQVETIlIyM0OBFCNC/9oADAMBAAIRAxEAPwCY8I4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckNBuVywLSmMLcI1PwQlLb0aS9dpxYcImBQEbduSjSy+kibhRPzfzGg0IcMwNtNM1LkjLB1S7Np2HRRne+wm44ga3C4ZjiDnRWR0S4X2tEp2LakObhNiwyCHfA7QVsMI4clCPRveIysx1Lz2Hmmf7XZj5lTc11RVQ1ozy4+D17DCOHJMI4cleigyLMI4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckwjhyV6ICzCOHJMI4cleiAswjhyTCOHJXogLMI4ckwjhyV6ICzCOHJMI4cleiAIiIAiIgCIqFAecWIGgk7FpWgxH57162jM4jhGgVr4ggQy4mhI5BDVLS37mZ5SxmRIFPio6t63oUSKWBwLmnQ6haa1LZiRpoOYT2XUaBtNQuavPIx5WaD4ooXgOB2HaR8VZo3r06Urb8sybxyHVuEVmQcdRsO9Sr0dXkE3Lhjz+ZDoDU6jYeQUe2dHbMwSw6EcjT7rVWPPvs2cD86NNHDe06/BNb8D9yOL7R9FosOzp1seG2Iw1DgD/AIWYqnI1rwyqIiEBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQFFiT8fA3idFkudQVK0cZ5iP+XghaVtlZOFUlztBmuNvzbh/SYczrTYNF1N4bRZLQTwHM7lF8hLPnZoDMl5z4N/8AFaV7s6sUpt3XSOk6PLB6x/XvHZb3a7TvXT3+u4J6VcAPzGAlh+nvoFv7Nk2wITYbRk0LLUN+TC8rquR8xWVNOgRSx+VCWkbnDJdHbsmI8PrG95uvELZ9LF1+qf5XDHYdk+mx2w/NaK7Np4hgdnsPEKTV1pq0dR0V3lwP8liOydmwk6HaPkpdXzja0q6VjNiMyFcTSN+tFNdy7fbOyrX17bQA4bajKqNe5GaNpWumdIiIqnMERUKAtJoresG8c1wnSDa74bmwmOLQQC6m2tVxUGDGiVLA9w4Eq6ja2dMendTyb0Th1g3jmnWDeOahP8Pmf4RPin4fM/wfzKcSf8afyJsEQbxzV9VBTnxYLxUva7XMlSncu0nTEuC41c0lpO+m1HOvJTJh4ztM6NFQrVTN4JeG8sfEa1zdQdiroxSb6Nsix5SbZFaHMcHNOhGhXsXKBouRaqZvBLw3YXRWBw2VXk288sf91inTJ4V3o3SLSi9Er65nNbaFEDgCCCDoU0Q5a7R6IlVgz1qwoFOse1tdKlQvISb6M5Fqpa35eK8MZEa5x2DVZE9aUOAAYjw0HSqnQ4vejNRa6RtqDHdhhva47gtiCoDTXZVERCCiLBn7UhQKdY9ra6VVJC1oUckQ3tdTWinT7J09bM9FRxoFqnXhlw/AYrMVaU47k0Em+jbovNj6q8lQQEXi6LRuI5AarWwrxS73BrYrCToKoSpb6NwioCsCftaFAIER7Wk6AoEt9GwRaTzplfWs5qvnRK+tZzU8WW+nXwbpFpPOmV9czmvSHeOWdWkRuScWQ4r4NwiIoKhUqqrHmo4Y0nl4oDCtOZ/aPevKEBDYXmlaZLyl2F7iT71zd+Lc6tmBh7ThQU2Dafgp7N5ltqV7nL3rtczEXA01a3dtK7m4Vg9RC6x47b8+IC4+49hGZjCI8dhhrntNVLzG0FBoNFNfCNPUWpSxz0eiIiqchhWrIsmITocQAtcCPCuVfivnS2rOfZ046G4EAHs8WH/FF9LVXD9Jl2BOS/WMH5kOpFBmW6uHwUmmOteH0zg2YZuBhyrSrTx3LEuZbb7PmwH1DHHC8bNaA/Gq0137QMOJgdUZ6HYRsW2vHIh7RGYN2KnwUy9eGdGN6bxvpk/QIoe0OaaggEHeDovVRt0W3k6yH5M91Xs7tTq3d7gpJUNaObJDitMqqKqKChFvSN6UPYb9V73KtiBLw3NivDSXVFVvr43bdNUewjG3YdoXEm6k0P8Abctpa46O+KisalskDzslPWN/vuVDeyU9Y3++5R/5qzXqnJ5qzXq3KNIr9HF+R0s8JCbjY3Rs6Uw6DVdbZEjCgwwIIAac8tqhufs+JAcGxGlrqVHgpD6OZtz4DmuNcLsvCgSl4Iz49SmntHYuUN3v9Mi+19lMh0UNXw9Ni+19lGJ+Svpf1Hc3Qm2QpFjnuDWgakrQXivo6ISyBVrdrtp8Fyb5t7mBhccDdG7F09y7Ml4rqxHBzxow6eKtUpeWbPFM7ujX2LduNNuxOq1mpc7b4KRpG7kCFCMMNBxCjidSttDhhoAaAANi9KLN1vo5cmaqfjwiI70XcdKvLmgmG45HdXYs26F6DBcIUU1YT2Sf27OSkiblWxWFrgCDqoovRdx0o/E0Vhk5HdwPFWlqlpm8ZJyTxrska2rchy0LGSCSOyAda/RRZHjxp6PoXOccgNAFjwhEmXtYMTjkGiuilO7N3mSkOpoXnV27gFOlIfHAvli7N3myjKmhedXbuAWm6Sx+XD8Su5ouG6Sv02eJVZe6McVOsibNT0c+ku9k/JSgFF/Rx6Q72fopQUV2PU/rKqiqqKpgR50m6wv+30VnRl34ng35lX9JusLxd9FZ0Zd+L4N+ZWv/ACdv8JIcXunwKg61zSPE9t3zU4xT2T4FQhaY/wBU8H+Z+ajH2V9L2zeXZva+XOCLV7K67W/4UlyM22KwOY4OB2hRta90nNhtjQhiBaC5u0V3LU2LbsWUfVtS3awnVWcqltFrxTk257JctD9B/slQ9Yh/1LPa+6k2UtqHNyziwjFhNW7QowsX0lntfdRPhMjDLmaTJvZoo66S/wBRns/UqRW6KOekv9Rns/UqsdmWD9xGhsGwHzeLA5ow61qtz/8An8b+bOZ+y5+ybZiy1erOuq2XnnNb/grtP2Ou1k5Pi1oz/MCN/NnM/ZZcjcuLDBq9hrTfs9y6K6FovmIGKJ3qrfqjpo5azWnplURFQ5y0laSdj43UGgWdaMxhbhGpWFLMDQXu0GnEqdGkrS2zxtOabLQSSdlSooiOfOzNBmXmg4Bbi+ts9bE6tpyBzpv2BdH0eWB1bPKHjtOHZrsG9T0dcv6MOn2+jqrCstsrBbDaNBn4nVbNUCFVOBvfllyLCnLShwu84V3DVatt7Jcuw4iCgOhVrhUUWLKWjDi9x7XeBWWgII6T7tGUmOvhgiG81qNGu/ySse71oCJDwPpmKH5KarwWQycl3wXgUcMuDthXzvGgvkJp0N4oWOp4t0B+ClHRP3zr3RnPc+RmmvZUYTVvEVqRyU9XetZk5LsispmBUbnUzChybhCagVb3mioKyOje8RlZjqXmkN5pn+13+SVPa2Xr/bO/dE4q0lUa6oyVxCqchGV5L0TDI74bXYQ1xApuW1sW+ENsFoivcXbTkr703QdMPMSE4Bx1B0K5rzImdzVqlLXk7Z+k5SZ2QvvLbz8FTz2lt5+C4/zJmdzf77k8yZnc3++5OMkPHh+TxvharJqM10OtA2mfifuum6NB+VEP/L6BaGDceYJFcIHv+ykC71kCUhBgzOrjvKVS1pE5rlRxlm2Khu9/psX2lMhUcXhupMRpl8RgbhcclSGkzL01Ka22etkXchzciw919Mnb9deC5W0bMjScTtAtp3XDQqU7rSD5eXax/eC2E7IsjNLXtBBVuXkus7VvflHC3dvqRRkxpoH/AHXfQZhr2hzSHA6EaKOrWuK9r6wSCw79Qsuw7LnpV2VHNrm01oopJ9FckxX3S/6JAXLX/wDRD7Q+q6WGSQK5Gma017LOfMy5Yylag8lWXpmON6tbI9uOf9Y3wKl4KPbs3YjwJhr3AYQD8VIQVrab8GvqKVVtBcN0lfps8T813S5W+ljxJpjBDAyJrVRL0ymFpWmzkrhzbIUdznuDRh2+CkP8flvWs5qORcmZ3DmVd5lTPDmVpSlvezoyTjuuTokX8flvWs5r3lLShRSRDe1xGtFGXmVNbhzK6S5tgRZZ73RKUIFNeKzqUumZXihTtMwek3WF4u+is6Mu/F8G/MrbX1sSLNFnVgHDWteKtuVYUWVc8xAO0BSldhVk1xL85+jx35Oui90+BUI2l6U/2z/9BTfE7p8FGc5c+YfHc8BtC+uuytVEtIr6elO9kh2YKwWeyPkuavPdFsYF8KjX7RscuokYRZDa06hoHJZACqqae0YrJU1tEFu6yXiFvaY7QhX2J6Szi4fVSreC70Obaaijxo4a+C46QudMQ47XHCWtdrnotVS0dizzUPfhkmN0UddJf6jPZ+pUit0XHX1sGLMvYYYFAKH4qk+KObC0r2zR3FjwWY+uLBuxe5dh5fJfyhfBcILlTW4fFV8y5rcPirvi/c6KUU98iQYNsyrRRsRgG4Fe7bbgHSKzmo38ypncPithZl05hgdUDOn1VOM/Jm8UfkSSvOLEDQSVfVae0ZnE7A06aqhzTOzyFYkTxPILn733lZAY6E13aGQ3VIXWykHAwnaVEd8bJfEL698OrTfr91OzaHPJJ9Fbq2QZyYBdm0HE479qmWC1rWhooABQL5rlnTUKoZjbvoqxrYmoZo+I8HiVZrZ0ZpeV72j6ZBquMti8ziXshigBoHb99PesC5s5Eg2U+YiPLzhc4VP8a5LVNjCPLQ4zM6l9eBLjqqtaOJzrYhuMQuDnkPc0hrydHHQqLpuXjQIzw9z2xA45naK5EbM9VJS8bVs5k5Dwvo2K3uP37mu+SgmHKr7ujn7Kvk9pYx7e2HNpEGuuhGlFPslFLobHGhJaCSNMxVfLs7KPgxHMeMLm6/QjgdVM/RjajpqRdBcTihjDi20dWnKiG2XCkuUvwSBiG8KOelS7PXwvKYYHWMHaA1c3/Gaju07Qmocw+GIr6te4AV2AkD5Lw8snTkXRDXYeKtplpwcWnsvurPkOwHxCyLy2eYbxFZoTU02H/wBUh3Pu/DisZGezA9ooR/LLVL2WQATUdhw2bCi8Mh2ovx/Zseji8flcuGPP5kMUI2kDQrtV852RaD7Omw4ftdQ8Wk0+VV9BWfNtjQ2xGmrXAEe9GimbHp8l0zJpmiuRVOfRbhTCrkQktDVUKqICiorkQFFVEQFKJREQBCFVEBaAqqqIAqFVWkvS9zZerSQcTRUcSgNxlwVSueh2GSxrmxXh1AdlK0XtYk854fCi9+Hqd4NaFAbsUVaLU2R1bWvLHlwDnYi7ZTVGW9Cc7CCczQO2EoDalVAXOWpbwhx2MBIaK4/otp+KQ+r6wmja0z4miAzyrS4AV2LXwbWhxHljTU0OezRYsk1ggRcDnOHbrXfTZwQG5hxA4VBqN69FytiWvDhS7GuJJ2gbFv5edZEZja6rftqgMoqlF4Ss22I3E01bvXgbTZge4HJhIPihBnhCFzVi3gEQua8nEXUb4UW2nrVhwTRxzOwaoSZ2FVosCQtWHGNGntD9p1VsxbEKG5zXOoW7EBsaJRa02xDEIRCaB2g2kq2DbUJ1cyKb0BsXDLmoMtG88aUtB7XVo1+YOhyU7VXAX5uE2dd10I4Ym0bHePHRSjXDST0+mbixreExBa97mNrsBKttOXl5gdtza7wc1x0jdmZhsDCx2W7RZBsKZ/g7++9NGzw4/k2rrvS1CGxKHZoorvtJOhRw0kEUNCNKLvhYcz6t6x5y60aK3C+E47jtHgpXZeIiXvZtWsx3eOD1b/rVRvc+3/Jn9XEzgxKA/wDEnKvzUvXNsmJDk3S8dpw5gV2tcSTVQpeWyTKTL4ZIIxEtI0IJrl4aKH2UjjW5fySHMwMNC04mOza4bQvBczdK8XV0lo5rDcey4/sJ+i6yZlzDdTUHMEaEbCoOeocvTMC3bObOS7jl1sNpc120tAq4H3ALO6EobqTDtBVg9+dVWVfhLnHIBjyfCi6Do2lOrk3vaM3viOHEFxLfmhKt8XJwdtyuO0XkbXj5mq7mHYku4Bz3gGg0WpmLBmDEe/qnVJJrTeVb+BzPq3q2/B15FFpeejspN8KEKNeNm1VnXwozCx720PHQrjPwOZ9W/wDvvVW2HM+rf/feo0ZvFj+Tm+kGx3QojcBxNp3htCk3o4Y5tnww6teO6gXgLGfMQ2MezCBSrna0G5dVJyzYTGsaKNaKBS2Z5LnipXse4VURVMAiIgCIiAIiIAiIgCIiAIiIAiIgC0l7PR/+7Pmt2tfbEh5RDwA0NQa+CAyJT9Nnsj5LQWYcc1He3ugAV3kVXsyyZggNdHOClKACtOS2cjZ7ILMLdup3+KA01hwOsgxmVpie8fFJaYfKhsOMwFlaB4HuFVsJOy3Q4b2h9C5ziCNlTVYrrJjRCGxogcxpBoNTTfkgLLXDTNQCAM8XvyXretg8noBkXN08Qsi1rKMXA5jsD2d0qkzZz4sAMe+rsQJPga0QGRKS7WQQGgDs7uC1FiejRvaifJdAyHRgb/xp8FgSFlmHDewmuMuPhiQGLdWXZ5ODhFTrtWJY2Tppre6C6g2L2gWHGhMDYUXDXvV08RktnZlmNgwy3NxdXEd5OqAxLr+ij3/JeN3s+v2jG75BGWJFYXNZEww3E9naPDJZ1j2X5OHjFUOcTzAQGDddgwxTQVxupyVLEYHzMd7s3B1BXYMl7S9kxIcVxY+jHOLi3x3ZK6bsl/WdbBfgee8DoUBjWowMnIBbkXGhptGathQGvtB+IA0aSPGqzpCynCJ1sZ2N+g3DwXtBs4tmXxa5OFKIDHtmz3vcyJDwlzDXCdD/AGq8YNsszbFYWPbkRQfdZ9pS0VxDoT8JGoOhWFBsEuJfGfic6mwUFNyA36IiAoiIgKIqogKKJL4sYZh0J7A9pNQTkW7cj4lVRCUcVPXfYx1A52fhkuulXObCZDc4uDRkTrmiIa2/tR6TmZhy4yEWmJ/7iBs5GilKzJJsCCyGzugAKqIYmWiIgCIiAqiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgP/9k="
+                                            alt="">
+                                    </div>
+                                    <p class="mb0">Authorized Signatory
+                                    </p>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    <form>
+        <div class="printinvbtn">
+            <input type="button" value="Print" onclick="window.print()" />
+        </div>
+    </form>
+</body>
+
+</html>
